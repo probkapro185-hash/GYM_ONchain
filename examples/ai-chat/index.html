@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>SFEDU Gym AI</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f6f8;
+      color: #16181d;
+    }
+
+    button, input, textarea { font: inherit; }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: .65;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      height: 100vh;
+      height: 100dvh;
+      min-height: 0;
+    }
+
+    .side {
+      background: #17191f;
+      color: #fff;
+      padding: 18px;
+      overflow-y: auto;
+      position: relative;
+      z-index: 30;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 18px;
+      margin-bottom: 18px;
+      padding-right: 38px;
+    }
+
+    .field { margin: 10px 0; }
+
+    .field label {
+      font-size: 12px;
+      color: #aaa;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .field input {
+      width: 100%;
+      padding: 9px;
+      border-radius: 8px;
+      border: 1px solid #3a3d46;
+      background: #22252c;
+      color: #fff;
+      outline: none;
+    }
+
+    .field input:focus-visible {
+      border-color: #9da2ac;
+      outline: 2px solid #9da2ac;
+      outline-offset: 2px;
+    }
+
+    .field input::placeholder {
+      color: #9da2ac;
+      opacity: 1;
+    }
+
+    button {
+      border: 0;
+      border-radius: 9px;
+      padding: 10px 12px;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: #fff;
+      color: #111;
+      width: 100%;
+      font-weight: 700;
+    }
+
+    .conv {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 8px;
+      background: #22252c;
+      font-size: 13px;
+    }
+
+    .conv:hover { background: #2b2f38; }
+
+    .conv.active { outline: 1px solid #777; }
+
+    .conv-open {
+      flex: 1;
+      min-width: 0;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      color: inherit;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .conv-open:focus-visible,
+    .delete:focus-visible,
+    .menu-btn:focus-visible,
+    .side-close:focus-visible,
+    .primary:focus-visible,
+    .send:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 2px;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 0;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 22px;
+      border-bottom: 1px solid #e2e4e8;
+      background: #fff;
+      font-weight: 700;
+      flex: 0 0 auto;
+    }
+
+    .menu-btn, .side-close {
+      display: none;
+      background: transparent;
+      color: inherit;
+      padding: 6px 8px;
+      font-size: 20px;
+    }
+
+    .messages {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 26px;
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .msg {
+      max-width: 78%;
+      padding: 13px 15px;
+      border-radius: 16px;
+      margin: 10px 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      line-height: 1.45;
+    }
+
+    .user {
+      margin-left: auto;
+      background: #17191f;
+      color: #fff;
+    }
+
+    .assistant {
+      background: #fff;
+      border: 1px solid #e1e3e7;
+    }
+
+    .sources {
+      font-size: 12px;
+      color: #626875;
+      margin: 6px 0 18px;
+    }
+
+    .source-chip {
+      display: inline-block;
+      background: #eceef2;
+      border-radius: 999px;
+      padding: 4px 8px;
+      margin: 3px 4px 0 0;
+    }
+
+    .composer {
+      padding: 16px;
+      border-top: 1px solid #e2e4e8;
+      background: #fff;
+      flex: 0 0 auto;
+    }
+
+    .row {
+      max-width: 960px;
+      margin: auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .row textarea {
+      flex: 1;
+      resize: none;
+      border: 1px solid #ccd0d6;
+      border-radius: 12px;
+      padding: 12px;
+      min-height: 48px;
+      max-height: 180px;
+      outline: none;
+    }
+
+    .row textarea:focus-visible {
+      border-color: #626875;
+      outline: 2px solid #626875;
+      outline-offset: 2px;
+    }
+
+    .row textarea::placeholder {
+      color: #626875;
+      opacity: 1;
+    }
+
+    .send {
+      background: #17191f;
+      color: #fff;
+      padding: 0 20px;
+      font-weight: 700;
+      min-width: 118px;
+    }
+
+    .muted {
+      font-size: 12px;
+      color: #9da2ac;
+      margin-top: 10px;
+    }
+
+    .empty {
+      text-align: center;
+      color: #626875;
+      margin-top: 18vh;
+    }
+
+    .error {
+      color: #b42318;
+      font-size: 13px;
+      padding: 8px 22px 0;
+      max-width: 1004px;
+      width: 100%;
+      margin: 0 auto;
+      min-height: 8px;
+    }
+
+    .delete {
+      background: transparent;
+      color: #aaa;
+      padding: 4px 7px;
+      flex: 0 0 auto;
+    }
+
+    .delete:hover { color: #fff; }
+
+    .overlay { display: none; }
+
+    @media (max-width: 760px) {
+      .app { grid-template-columns: 1fr; }
+
+      .side {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: min(88vw, 320px);
+        transform: translateX(-105%);
+        transition: transform .2s ease;
+        box-shadow: 10px 0 30px rgba(0,0,0,.18);
+      }
+
+      .side.open { transform: translateX(0); }
+
+      .side-close {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 9px;
+        color: #fff;
+      }
+
+      .menu-btn { display: inline-block; }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.35);
+        z-index: 20;
+      }
+
+      .overlay.open { display: block; }
+
+      .messages { padding: 14px; }
+
+      .msg { max-width: 92%; }
+
+      .composer { padding: 10px; }
+
+      .row { gap: 8px; }
+
+      .send {
+        min-width: auto;
+        padding: 0 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="side" id="sidebar" aria-label="Настройки и история">
+    <button class="side-close" id="sideClose" type="button" aria-label="Закрыть меню">×</button>
+    <div class="brand">SFEDU Gym AI</div>
+
+    <div class="field">
+      <label for="api">Backend URL</label>
+      <input id="api" type="url" inputmode="url" autocomplete="url" value="http://localhost:8080" />
+    </div>
+
+    <div class="field">
+      <label for="token">JWT Bearer token</label>
+      <input id="token" type="password" autocomplete="off" placeholder="eyJ..." />
+    </div>
+
+    <button class="primary" id="newChat" type="button">+ Новый чат</button>
+    <div class="muted">Токен хранится только в sessionStorage этой вкладки.</div>
+    <div id="conversations" aria-label="История диалогов"></div>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+
+  <main class="main">
+    <div class="top">
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Открыть меню">☰</button>
+      <span>AI-помощник по CRM</span>
+    </div>
+
+    <div id="error" class="error" role="alert" aria-live="polite"></div>
+
+    <div class="messages" id="messages" aria-live="polite">
+      <div class="empty">Спросите, как пользоваться системой, или задайте вопрос о своём абонементе и расписании.</div>
+    </div>
+
+    <div class="composer">
+      <div class="row">
+        <textarea
+          id="message"
+          placeholder="Например: сколько у меня осталось занятий?"
+          maxlength="4000"
+          aria-label="Сообщение"
+        ></textarea>
+        <button id="send" class="send" type="button">Отправить</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+'use strict';
+
+const apiEl = document.getElementById('api');
+const tokenEl = document.getElementById('token');
+const msgEl = document.getElementById('message');
+const messagesEl = document.getElementById('messages');
+const errorEl = document.getElementById('error');
+const sendBtn = document.getElementById('send');
+const conversationsEl = document.getElementById('conversations');
+const sidebarEl = document.getElementById('sidebar');
+const overlayEl = document.getElementById('overlay');
+
+let conversationId = null;
+let sending = false;
+let historyLoadSeq = 0;
+let conversationListSeq = 0;
+
+function storageGet(key) {
+  try {
+    return sessionStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function storageSet(key, value) {
+  try {
+    sessionStorage.setItem(key, value);
+  } catch {
+    // Storage can be unavailable in hardened/private browser contexts.
+  }
+}
+
+apiEl.value = storageGet('sfedu_api') || apiEl.value;
+tokenEl.value = storageGet('sfedu_token') || '';
+
+function normalizedApiUrl() {
+  return apiEl.value.trim().replace(/\/+$/, '');
+}
+
+function saveSettings() {
+  storageSet('sfedu_api', normalizedApiUrl());
+  storageSet('sfedu_token', tokenEl.value.trim());
+}
+
+function resetConversationView(text = 'Спросите, как пользоваться системой, или задайте вопрос о своём абонементе и расписании.') {
+  conversationId = null;
+  ++historyLoadSeq;
+  ++conversationListSeq;
+  conversationsEl.replaceChildren();
+  showEmpty(text);
+}
+
+apiEl.addEventListener('change', async () => {
+  apiEl.value = normalizedApiUrl();
+  saveSettings();
+  resetConversationView();
+  if (tokenEl.value.trim()) {
+    await loadConversations();
+  }
+});
+
+tokenEl.addEventListener('change', async () => {
+  saveSettings();
+  resetConversationView();
+  if (tokenEl.value.trim()) {
+    await loadConversations();
+  }
+});
+
+function setError(message = '') {
+  errorEl.textContent = message;
+}
+
+function validateConnectionSettings() {
+  const api = normalizedApiUrl();
+  const token = tokenEl.value.trim();
+
+  if (!api) {
+    throw new Error('Укажите Backend URL.');
+  }
+
+  try {
+    const url = new URL(api);
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+      throw new Error();
+    }
+    if (url.username || url.password || url.search || url.hash) {
+      throw new Error();
+    }
+  } catch {
+    throw new Error('Укажите обычный http:// или https:// Backend URL без логина, query-параметров и #fragment.');
+  }
+
+  if (!token) {
+    throw new Error('Укажите JWT Bearer token.');
+  }
+
+  return { api, token };
+}
+
+async function request(path, opts = {}) {
+  setError();
+
+  const { api, token } = validateConnectionSettings();
+  const headers = new Headers(opts.headers || {});
+  headers.set('Authorization', 'Bearer ' + token);
+
+  if (opts.body != null && !headers.has('Content-Type')) {
+    headers.set('Content-Type', 'application/json');
+  }
+
+  let response;
+  try {
+    response = await fetch(api + path, { ...opts, headers });
+  } catch {
+    throw new Error('Не удалось подключиться к backend. Проверьте URL, сервер и CORS.');
+  }
+
+  if (!response.ok) {
+    let message = 'HTTP ' + response.status;
+    try {
+      const data = await response.json();
+      if (data && typeof data.error === 'string') {
+        message = data.error;
+      }
+    } catch {
+      // Backend returned a non-JSON error response.
+    }
+
+    if (response.status === 401) {
+      message = 'Авторизация не прошла. Проверьте JWT или войдите заново.';
+    } else if (response.status === 403) {
+      message = 'Доступ запрещён. Проверьте права пользователя или CORS.';
+    } else if (response.status === 429) {
+      message = 'Слишком много запросов. Попробуйте немного позже.';
+    } else if (response.status === 500) {
+      message = 'Внутренняя ошибка backend.';
+    } else if (response.status === 503) {
+      message = 'AI-сервис сейчас недоступен или не настроен на backend.';
+    }
+
+    throw new Error(message);
+  }
+
+  if (response.status === 204) {
+    return null;
+  }
+
+  const contentType = response.headers.get('content-type') || '';
+  if (!contentType.includes('application/json')) {
+    throw new Error('Backend вернул неожиданный формат ответа.');
+  }
+
+  return response.json();
+}
+
+function showEmpty(text) {
+  const div = document.createElement('div');
+  div.className = 'empty';
+  div.textContent = text;
+  messagesEl.replaceChildren(div);
+}
+
+function renderMessage(role, content, sources = []) {
+  const empty = messagesEl.querySelector('.empty');
+  if (empty) empty.remove();
+
+  const div = document.createElement('div');
+  div.className = 'msg ' + (role === 'user' ? 'user' : 'assistant');
+  div.textContent = String(content ?? '');
+  messagesEl.appendChild(div);
+
+  if (role === 'assistant' && Array.isArray(sources) && sources.length) {
+    const sourceBox = document.createElement('div');
+    sourceBox.className = 'sources';
+    sourceBox.append(document.createTextNode('Источники: '));
+
+    for (const source of sources) {
+      const chip = document.createElement('span');
+      chip.className = 'source-chip';
+      chip.textContent = source && source.title ? String(source.title) : 'Источник';
+      if (source && source.source) {
+        chip.title = String(source.source);
+      }
+      sourceBox.appendChild(chip);
+    }
+
+    messagesEl.appendChild(sourceBox);
+  }
+
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  return div;
+}
+
+function renderConversation(c) {
+  const row = document.createElement('div');
+  row.className = 'conv' + (c.id === conversationId ? ' active' : '');
+
+  const openBtn = document.createElement('button');
+  openBtn.className = 'conv-open';
+  openBtn.type = 'button';
+  openBtn.textContent = c.title || 'Без названия';
+  openBtn.title = c.title || 'Без названия';
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.className = 'delete';
+  deleteBtn.type = 'button';
+  deleteBtn.title = 'Удалить';
+  deleteBtn.setAttribute('aria-label', 'Удалить диалог');
+  deleteBtn.textContent = '×';
+
+  async function openConversation() {
+    if (sending) {
+      setError('Дождитесь завершения текущего ответа AI.');
+      return;
+    }
+    conversationId = c.id;
+    closeSidebar();
+    await loadHistory(c.id);
+    await loadConversations();
+  }
+
+  openBtn.addEventListener('click', openConversation);
+
+  deleteBtn.addEventListener('click', async () => {
+    if (sending) {
+      setError('Дождитесь завершения текущего ответа AI.');
+      return;
+    }
+
+    if (!confirm('Удалить этот диалог?')) return;
+
+    try {
+      await request('/api/v1/ai/conversations/' + encodeURIComponent(c.id), {
+        method: 'DELETE'
+      });
+
+      if (conversationId === c.id) {
+        startNewChat(false);
+      }
+
+      await loadConversations();
+    } catch (error) {
+      setError(error.message);
+    }
+  });
+
+  row.append(openBtn, deleteBtn);
+  return row;
+}
+
+async function loadConversations() {
+  const seq = ++conversationListSeq;
+  if (!tokenEl.value.trim()) {
+    conversationsEl.replaceChildren();
+    return;
+  }
+
+  try {
+    const items = await request('/api/v1/ai/conversations');
+
+    if (seq !== conversationListSeq) return;
+
+    if (!Array.isArray(items)) {
+      throw new Error('Некорректный формат списка диалогов.');
+    }
+
+    const fragment = document.createDocumentFragment();
+    for (const c of items) {
+      fragment.appendChild(renderConversation(c));
+    }
+
+    conversationsEl.replaceChildren(fragment);
+  } catch (error) {
+    if (seq !== conversationListSeq) return;
+    setError(error.message);
+  }
+}
+
+async function loadHistory(id) {
+  const seq = ++historyLoadSeq;
+  setError();
+
+  try {
+    const items = await request('/api/v1/ai/conversations/' + encodeURIComponent(id));
+
+    if (seq !== historyLoadSeq) return;
+
+    if (!Array.isArray(items)) {
+      throw new Error('Некорректный формат истории диалога.');
+    }
+
+    messagesEl.replaceChildren();
+
+    if (!items.length) {
+      showEmpty('В этом диалоге пока нет сообщений.');
+      return;
+    }
+
+    for (const message of items) {
+      renderMessage(message.role, message.content, message.sources || []);
+    }
+  } catch (error) {
+    if (seq !== historyLoadSeq) return;
+    setError(error.message);
+  }
+}
+
+function startNewChat(refreshList = true) {
+  if (sending) {
+    setError('Дождитесь завершения текущего ответа AI.');
+    return;
+  }
+  conversationId = null;
+  ++historyLoadSeq;
+  showEmpty('Новый диалог. Задайте вопрос по SFEDU Gym CRM.');
+  closeSidebar();
+
+  if (refreshList) {
+    loadConversations();
+  }
+
+  msgEl.focus();
+}
+
+function setSending(value) {
+  sending = value;
+  sendBtn.disabled = value;
+  sendBtn.textContent = value ? 'Отправка…' : 'Отправить';
+  msgEl.disabled = value;
+  apiEl.disabled = value;
+  tokenEl.disabled = value;
+  messagesEl.setAttribute('aria-busy', value ? 'true' : 'false');
+}
+
+async function send() {
+  if (sending) return;
+
+  const message = msgEl.value.trim();
+  if (!message) return;
+
+  try {
+    validateConnectionSettings();
+  } catch (error) {
+    setError(error.message);
+    return;
+  }
+
+  setSending(true);
+
+  const pendingMessageEl = renderMessage('user', message);
+  msgEl.value = '';
+
+  try {
+    const body = { message };
+    if (conversationId != null) {
+      body.conversation_id = conversationId;
+    }
+
+    const response = await request('/api/v1/ai/chat', {
+      method: 'POST',
+      body: JSON.stringify(body)
+    });
+
+    if (!response || typeof response.conversation_id !== 'number' || typeof response.reply !== 'string') {
+      throw new Error('Backend вернул некорректный ответ AI.');
+    }
+
+    conversationId = response.conversation_id;
+    renderMessage('assistant', response.reply, response.sources || []);
+    await loadConversations();
+  } catch (error) {
+    pendingMessageEl.remove();
+    setError(error.message + ' Сообщение не подтверждено сервером.');
+    msgEl.value = message;
+  } finally {
+    setSending(false);
+    msgEl.focus();
+  }
+}
+
+function openSidebar() {
+  sidebarEl.classList.add('open');
+  overlayEl.classList.add('open');
+}
+
+function closeSidebar() {
+  sidebarEl.classList.remove('open');
+  overlayEl.classList.remove('open');
+}
+
+document.getElementById('send').addEventListener('click', send);
+document.getElementById('newChat').addEventListener('click', () => startNewChat());
+document.getElementById('menuBtn').addEventListener('click', openSidebar);
+document.getElementById('sideClose').addEventListener('click', closeSidebar);
+overlayEl.addEventListener('click', closeSidebar);
+
+msgEl.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
+    event.preventDefault();
+    send();
+  }
+});
+
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    closeSidebar();
+  }
+});
+
+if (tokenEl.value) {
+  loadConversations();
+}
+</script>
+</body>
+</html>

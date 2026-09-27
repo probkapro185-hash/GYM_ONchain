@@ -1,0 +1,15 @@
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+bin/
+coverage.out
+*.test
+.DS_Store
+.idea/
+.vscode/
+README*.local.md
+
+# Uploaded images live in persistent volumes, not in the image
+data/uploads/

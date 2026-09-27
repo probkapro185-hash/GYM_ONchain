@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="referrer" content="no-referrer"/>
+<meta name="theme-color" content="#070a12"/>
+<meta name="color-scheme" content="dark"/>
+<title>SFEDU — Спортивный зал</title>
+<link rel="icon" type="image/svg+xml" href="/assets/gym-mark.svg?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+<div id="app">
+
+<!-- LANDING -->
+<div id="page-landing" class="page active">
+  <div id="landing" style="height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory">
+
+    <nav class="land-nav">
+      <div class="topbar-logo" style="gap:9px">
+        <img class="gym-mark" src="/assets/gym-mark.svg" width="30" height="30" alt="" aria-hidden="true">
+        <span style="font-family:var(--f2);font-size:20px;font-weight:700;color:#3b82f6;letter-spacing:.08em">SFEDU</span>
+      </div>
+      <div class="land-nav-links">
+        <span class="land-nav-link" onclick="document.getElementById('sec-hero').scrollIntoView({behavior:'smooth'})">Главная</span>
+        <span class="land-nav-link" onclick="document.getElementById('sec-services').scrollIntoView({behavior:'smooth'})">Услуги</span>
+        <span class="land-nav-link" onclick="document.getElementById('sec-schedule').scrollIntoView({behavior:'smooth'})">Расписание</span>
+        <span class="land-nav-link" onclick="document.getElementById('sec-trainers-land').scrollIntoView({behavior:'smooth'})">Тренера</span>
+        <span class="land-nav-link" onclick="document.getElementById('sec-contacts').scrollIntoView({behavior:'smooth'})">Контакты</span>
+      </div>
+      <button class="btn btn-outline" onclick="openModal('modal-login')">Войти</button>
+    </nav>
+
+    <!-- HERO -->
+<section id="sec-hero" style="scroll-snap-align:start;height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;flex-shrink:0;padding-top:62px;box-sizing:border-box">
+  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1800&q=80');background-size:cover;background-position:center 30%;filter:brightness(.4)"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(108deg,rgba(9,9,15,.95) 35%,rgba(9,9,15,.15) 100%)"></div>
+  <div style="position:absolute;inset:0;opacity:.03;background-image:linear-gradient(#2563eb 1px,transparent 1px),linear-gradient(90deg,#2563eb 1px,transparent 1px);background-size:44px 44px"></div>
+  <div style="position:absolute;top:20%;right:20%;width:500px;height:500px;border-radius:50%;background:rgba(37,99,235,.07);filter:blur(120px);pointer-events:none"></div>
+  <div style="position:relative;z-index:2;padding:0 80px;max-width:780px">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.35);border-radius:30px;padding:6px 18px;font-size:13px;color:var(--blue2);font-weight:600;margin-bottom:28px">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      Спортивный зал SFEDU — Ростов-на-Дону
+    </div>
+    <h1 style="font-family:var(--f2);font-size:clamp(44px,6.5vw,84px);font-weight:700;line-height:1.02;margin-bottom:20px;letter-spacing:-.01em;color:#fff">Ты можешь больше,<br><span style="color:var(--blue2)">чем думаешь</span></h1>
+    <p style="font-size:18px;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:42px;max-width:500px">Инвестиция в себя, которая окупится на <span style="color:var(--blue2);font-weight:700">100%</span></p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <button class="btn btn-primary" style="font-size:15px;padding:13px 34px;border-radius:var(--r2);box-shadow:0 0 28px rgba(37,99,235,.45)" onclick="openModal('modal-apply')">Записаться</button>
+      <button class="btn btn-outline" style="font-size:15px;padding:13px 34px;border-radius:var(--r2)" onclick="openModal('modal-login')">Войти в кабинет</button>
+    </div>
+    <div style="display:flex;gap:40px;margin-top:32px">
+      <div><div style="font-family:var(--f2);font-size:34px;font-weight:700;color:var(--blue2)">500+</div><div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:3px">Клиентов</div></div>
+      <div style="width:1px;background:rgba(255,255,255,.2)"></div>
+      <div><div style="font-family:var(--f2);font-size:34px;font-weight:700;color:var(--blue2)">12</div><div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:3px">Тренеров</div></div>
+      <div style="width:1px;background:rgba(255,255,255,.2)"></div>
+      <div><div style="font-family:var(--f2);font-size:34px;font-weight:700;color:var(--blue2)">5 лет</div><div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:3px">Опыта</div></div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;opacity:.6" onclick="document.getElementById('sec-services').scrollIntoView({behavior:'smooth'})">
+    <span style="font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.12em;text-transform:uppercase">Листать вниз</span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+    <!-- УСЛУГИ -->
+    <section id="sec-services" style="scroll-snap-align:start;height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px;background:var(--bg);flex-shrink:0;overflow:hidden;position:relative">
+      <div style="position:absolute;top:-100px;right:-100px;width:600px;height:600px;border-radius:50%;background:rgba(37,99,235,.04);filter:blur(80px);pointer-events:none"></div>
+      <div style="text-align:center;margin-bottom:52px">
+        <div style="font-size:13px;color:var(--blue2);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px">Что мы предлагаем</div>
+        <h2 style="font-family:var(--f2);font-size:42px;font-weight:700">Наши <span style="color:var(--blue2)">услуги</span></h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1100px;margin:0 auto;width:100%">
+        <div class="srv-card" style="display:flex;flex-direction:column;gap:14px">
+          <div style="width:46px;height:46px;border-radius:12px;background:rgba(37,99,235,.15);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="srv-title">Персональные тренировки</div>
+          <div class="srv-desc">Индивидуальная программа — тренер работает только с вами</div>
+        </div>
+        <div class="srv-card" style="display:flex;flex-direction:column;gap:14px">
+          <div style="width:46px;height:46px;border-radius:12px;background:rgba(34,197,94,.12);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div class="srv-title">Групповые занятия</div>
+          <div class="srv-desc">Энергия команды, профессиональный тренер, результат</div>
+        </div>
+        <div class="srv-card" style="display:flex;flex-direction:column;gap:14px">
+          <div style="width:46px;height:46px;border-radius:12px;background:rgba(245,158,11,.12);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 8v4l3 3"/></svg></div>
+          <div class="srv-title">Гибкое расписание</div>
+          <div class="srv-desc">Запись, перенос и отмена занятий онлайн 24/7</div>
+        </div>
+        <div class="srv-card" style="display:flex;flex-direction:column;gap:14px">
+          <div style="width:46px;height:46px;border-radius:12px;background:rgba(239,68,68,.12);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+          <div class="srv-title">Нутрициология</div>
+          <div class="srv-desc">Программа питания от профессиональных диетологов</div>
+        </div>
+        <div class="srv-card" style="display:flex;flex-direction:column;gap:14px">
+          <div style="width:46px;height:46px;border-radius:12px;background:rgba(37,99,235,.15);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <div class="srv-title">Рельеф тела</div>
+          <div class="srv-desc">Специализированные программы по формированию рельефа</div>
+        </div>
+        <div class="srv-card" style="display:flex;flex-direction:column;gap:14px">
+          <div style="width:46px;height:46px;border-radius:12px;background:rgba(139,92,246,.12);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="srv-title">Контроль прогресса</div>
+          <div class="srv-desc">Отслеживайте результаты в личном кабинете</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- РАСПИСАНИЕ -->
+    <section id="sec-schedule" style="scroll-snap-align:start;height:100vh;display:flex;align-items:center;padding:80px;background:var(--bg2);flex-shrink:0;overflow:hidden;position:relative">
+      <div style="position:absolute;bottom:-150px;left:-100px;width:600px;height:600px;border-radius:50%;background:rgba(37,99,235,.05);filter:blur(100px);pointer-events:none"></div>
+      <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%">
+        <div>
+          <div style="font-size:13px;color:var(--blue2);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px">Всегда под рукой</div>
+          <h2 style="font-family:var(--f2);font-size:42px;font-weight:700;margin-bottom:20px;line-height:1.1">Удобное <span style="color:var(--blue2)">расписание</span></h2>
+          <p style="font-size:15px;color:var(--t2);line-height:1.8;margin-bottom:36px">Просматривайте тренировки в форматах месяц, неделя и день. Записывайтесь онлайн в любое время и отслеживайте свои занятия.</p>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:36px">
+            <div style="display:flex;align-items:center;gap:12px"><div style="width:32px;height:32px;border-radius:8px;background:rgba(37,99,235,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span style="font-size:14px;color:var(--t2)">Онлайн запись 24/7</span></div>
+            <div style="display:flex;align-items:center;gap:12px"><div style="width:32px;height:32px;border-radius:8px;background:rgba(37,99,235,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span style="font-size:14px;color:var(--t2)">Перенос и отмена занятий</span></div>
+            <div style="display:flex;align-items:center;gap:12px"><div style="width:32px;height:32px;border-radius:8px;background:rgba(37,99,235,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span style="font-size:14px;color:var(--t2)">История тренировок</span></div>
+          </div>
+          <button class="btn btn-primary" style="padding:12px 28px;border-radius:var(--r2)" onclick="openModal('modal-apply')">Начать сейчас</button>
+        </div>
+        <div class="card card-glow" style="padding:24px" id="mini-cal"></div>
+      </div>
+    </section>
+
+    <!-- ТРЕНЕРА -->
+    <section id="sec-trainers-land" style="scroll-snap-align:start;height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px;background:var(--bg);flex-shrink:0;overflow:hidden;position:relative">
+      <div style="text-align:center;margin-bottom:48px">
+        <div style="font-size:13px;color:var(--blue2);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px">Профессионалы своего дела</div>
+        <h2 style="font-family:var(--f2);font-size:42px;font-weight:700">Наши <span style="color:var(--blue2)">тренера</span></h2>
+      </div>
+      <div id="land-trainers-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto;width:100%">
+        <div class="card" style="overflow:hidden;transition:all .3s" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+          <div style="height:180px;background:linear-gradient(135deg,var(--bg4),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:64px">💪</div>
+          <div style="padding:18px"><div style="font-weight:700;margin-bottom:4px">Загрузка...</div></div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px">
+        <button class="btn btn-outline" onclick="showPage('page-trainers')" style="padding:10px 28px;border-radius:var(--r2)">Все тренера →</button>
+      </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section id="sec-contacts" style="scroll-snap-align:start;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px;background:var(--bg2);flex-shrink:0;overflow:hidden;position:relative;text-align:center">
+      <div style="position:absolute;inset:0;opacity:.025;background-image:linear-gradient(#2563eb 1px,transparent 1px),linear-gradient(90deg,#2563eb 1px,transparent 1px);background-size:44px 44px"></div>
+      <div style="position:relative;z-index:1;max-width:700px;width:100%">
+        <div style="font-size:13px;color:var(--blue2);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px">Мы здесь</div>
+        <h2 style="font-family:var(--f2);font-size:42px;font-weight:700;margin-bottom:48px">Контакты</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px">
+          <div class="card" style="padding:24px;display:flex;align-items:center;gap:16px;text-align:left">
+            <div style="width:44px;height:44px;border-radius:12px;background:rgba(37,99,235,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div style="font-size:12px;color:var(--t3);margin-bottom:4px">Адрес</div><div style="font-size:14px;font-weight:600">г. Ростов-на-Дону,<br>ул. Спортивная, 1</div></div>
+          </div>
+          <div class="card" style="padding:24px;display:flex;align-items:center;gap:16px;text-align:left">
+            <div style="width:44px;height:44px;border-radius:12px;background:rgba(34,197,94,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div><div style="font-size:12px;color:var(--t3);margin-bottom:4px">Телефон</div><div style="font-size:14px;font-weight:600">+7 (863) 000-00-00</div></div>
+          </div>
+          <div class="card" style="padding:24px;display:flex;align-items:center;gap:16px;text-align:left">
+            <div style="width:44px;height:44px;border-radius:12px;background:rgba(245,158,11,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><div style="font-size:12px;color:var(--t3);margin-bottom:4px">Email</div><div style="font-size:14px;font-weight:600">info@sfedu-sport.ru</div></div>
+          </div>
+          <div class="card" style="padding:24px;display:flex;align-items:center;gap:16px;text-align:left">
+            <div style="width:44px;height:44px;border-radius:12px;background:rgba(139,92,246,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div><div style="font-size:12px;color:var(--t3);margin-bottom:4px">Режим работы</div><div style="font-size:14px;font-weight:600">Пн–Пт: 07:00–22:00<br>Сб–Вс: 09:00–20:00</div></div>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="padding:13px 40px;font-size:15px;border-radius:var(--r2);box-shadow:0 0 28px rgba(37,99,235,.4)" onclick="openModal('modal-apply')">Записаться бесплатно</button>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- TRAINERS PAGE -->
+<div id="page-trainers" class="page">
+  <div style="overflow:auto;flex:1">
+    <nav class="land-nav">
+      <div class="topbar-logo">
+        <img class="gym-mark" src="/assets/gym-mark.svg" width="28" height="28" alt="" aria-hidden="true">
+        <span style="font-family:var(--f2);font-size:18px;font-weight:700;color:#3b82f6;letter-spacing:.08em">SFEDU</span>
+      </div>
+      <div class="land-nav-links">
+        <span class="land-nav-link" onclick="showPage('page-landing')">Главная</span>
+        <span class="land-nav-link" style="color:var(--t1)">Тренера</span>
+      </div>
+      <button class="btn btn-outline" onclick="openModal('modal-login')">Войти</button>
+    </nav>
+    <div style="padding:90px 60px 60px">
+      <h1 style="font-family:var(--f2);font-size:36px;font-weight:700;margin-bottom:28px">Тренерский состав</h1>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px">
+        <div class="trainers-filters" id="spec-filters">
+          <button class="filter-btn active" onclick="filterTrainers('all',this)">Все</button>
+          <button class="filter-btn" onclick="filterTrainers('body_relief',this)">Рельеф тела</button>
+          <button class="filter-btn" onclick="filterTrainers('weight_loss',this)">Похудение</button>
+          <button class="filter-btn" onclick="filterTrainers('mass_gain',this)">Набор массы</button>
+        </div>
+        <div style="position:relative">
+          <input class="inp" id="trainer-search" placeholder="Имя или фамилия" style="width:220px;padding-left:36px" oninput="renderTrainers()">
+          <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--t3);font-size:14px">🔍</span>
+        </div>
+      </div>
+      <div class="trainers-grid" id="trainers-grid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENT DASHBOARD -->
+<div id="page-client" class="page">
+  <div class="topbar">
+    <div class="topbar-logo">
+      <img class="gym-mark" src="/assets/gym-mark.svg" width="26" height="26" alt="" aria-hidden="true">
+      <span style="font-family:var(--f2);font-size:17px;font-weight:700;color:#3b82f6;letter-spacing:.08em">SFEDU</span>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-stat"><span>Баланс:</span><span id="c-balance">0.00</span></div>
+      <button class="topbar-btn-pay" onclick="openModal('modal-topup')">Пополнение</button>
+      <div class="dropdown">
+        <button onclick="toggleDropdown('dd-client')" style="display:flex;align-items:center;gap:8px;background:var(--bg4);border:1px solid var(--border);border-radius:var(--r);padding:5px 11px;color:var(--t1)">
+          <div class="avatar" id="c-avatar" style="width:28px;height:28px;font-size:11px">ПТ</div>
+          <span id="c-firstname" style="font-size:13px;font-weight:600;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Профиль</span>
+        </button>
+        <div class="dropdown-menu" id="dd-client" style="display:none">
+          <button class="dropdown-item" onclick="clientNav('profile');closeAllDropdowns()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            Мой профиль
+          </button>
+          <div style="height:1px;background:var(--border);margin:4px 0"></div>
+          <button class="dropdown-item danger" onclick="logout()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Выйти
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dash-wrap">
+    <div class="sidebar" style="justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <button class="nav-item" id="cnav-profile" onclick="clientNav('profile')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>Главная</button>
+        <button class="nav-item" id="cnav-schedule" onclick="clientNav('schedule')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Расписание</button>
+        <button class="nav-item" id="cnav-progress" onclick="clientNav('progress')"><span class="nav-icon">📈</span>Прогресс</button>
+        <button class="nav-item" id="cnav-notifications" onclick="clientNav('notifications')"><span class="nav-icon">🔔</span>Уведомления</button>
+        <button class="nav-item" id="cnav-payments" onclick="clientNav('payments')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>Платежи</button>
+        <button class="nav-item" id="cnav-shop" onclick="clientNav('shop')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>Магазин</button>
+        <button class="nav-item" id="cnav-trainers" onclick="clientNav('trainers')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>Тренера</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px">
+        <button class="nav-item" onclick="toggleAI()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg>ИИ Спортсмен</button>
+        <button class="nav-item" onclick="logout()" style="color:var(--t3)" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--t3)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Выйти</button>
+      </div>
+    </div>
+    <div class="dash-main">
+      <!-- Profile -->
+      <div id="csec-profile" class="fade-up" style="padding:28px;max-width:700px">
+
+  <!-- Статистика -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px">
+  <div class="card" style="padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:110px">
+    <div style="font-size:13px;color:var(--t2);margin-bottom:8px">Посещений</div>
+    <div style="font-size:36px;font-weight:800;color:var(--blue2);font-family:var(--f2);line-height:1" id="stat-visits">—</div>
+  </div>
+  <div class="card" style="padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:110px">
+    <div style="font-size:13px;color:var(--t2);margin-bottom:8px">Занятий осталось</div>
+    <div style="font-size:36px;font-weight:800;color:var(--green);font-family:var(--f2);line-height:1" id="stat-sessions">—</div>
+  </div>
+  <div class="card" style="padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:110px">
+    <div style="font-size:13px;color:var(--t2);margin-bottom:8px">Абонемент до</div>
+    <div style="font-size:22px;font-weight:800;font-family:var(--f2);line-height:1" id="stat-sub-expires">—</div>
+  </div>
+  <div class="card" style="padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:110px">
+    <div style="font-size:13px;color:var(--t2);margin-bottom:8px">На этой неделе</div>
+    <div style="font-size:36px;font-weight:800;color:var(--yellow);font-family:var(--f2);line-height:1" id="stat-week">—</div>
+  </div>
+</div>
+
+  <!-- Ближайшая тренировка -->
+  <div class="card" style="padding:18px;margin-bottom:16px">
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="width:44px;height:44px;border-radius:50%;background:rgba(37,99,235,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      </div>
+      <div>
+        <div style="font-size:13px;color:var(--t2);margin-bottom:3px">Ближайшая тренировка</div>
+        <div style="font-size:15px;font-weight:700" id="stat-next-training">Загрузка...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Профиль -->
+  <div class="card card-glow" style="padding:30px">
+    <h2 style="font-size:20px;font-weight:700;margin-bottom:20px">Мои данные</h2>
+    <div id="profile-view-mode">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+        <div class="avatar" id="profile-big-avatar" style="width:48px;height:48px;font-size:18px">ПТ</div>
+        <span id="profile-fullname" style="font-size:16px;font-weight:600">Загрузка...</span>
+      </div>
+      <div style="display:flex;gap:22px;margin-bottom:18px">
+        <label id="label-gender-male" style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--t2);cursor:pointer"><input type="radio" name="gender" id="gender-male" value="male" style="accent-color:var(--blue);width:15px;height:15px"> Мужской</label>
+        <label id="label-gender-female" style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--t2);cursor:pointer"><input type="radio" name="gender" id="gender-female" value="female" style="accent-color:var(--blue);width:15px;height:15px"> Женский</label>
+      </div>
+      <div class="profile-form" style="margin-bottom:16px">
+        <div class="inp-wrap"><label class="inp-label">ФИО</label><input class="inp" id="p-fullname" placeholder="Фамилия Имя Отчество"></div>
+        <div class="inp-wrap"><label class="inp-label">Телефон</label><input class="inp" id="p-phone" placeholder="+7(987)654-32-10"></div>
+      </div>
+      <div class="inp-wrap" style="margin-bottom:22px"><label class="inp-label">Email</label><input class="inp" id="p-email" placeholder="email@gmail.com"></div>
+      <div id="profile-msg" style="font-size:13px;margin-bottom:12px;display:none"></div>
+      <div style="display:flex;gap:12px">
+        <button class="btn btn-ghost" onclick="showPassMode()">Сменить пароль</button>
+        <button class="btn btn-ghost" id="btn-edit-profile" onclick="enableProfileEdit()">Изменить</button>
+        <button class="btn btn-primary" id="btn-save-profile" onclick="saveProfile()" style="display:none">Сохранить</button>
+      </div>
+    </div>
+    <div id="profile-pass-mode" style="display:none">
+      <div style="margin-bottom:24px"><button class="btn btn-ghost btn-sm" onclick="hidePassMode()">‹ Назад</button></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div class="inp-wrap"><label class="inp-label">Новый пароль</label><input type="password" class="inp" id="new-pass" placeholder="••••••••"></div>
+        <div class="inp-wrap"><label class="inp-label">Подтверждение</label><input type="password" class="inp" id="confirm-pass" placeholder="••••••••"></div>
+      </div>
+      <div class="inp-wrap" style="margin-bottom:20px"><label class="inp-label">Текущий пароль</label><input type="password" class="inp" id="old-pass" placeholder="••••••••"></div>
+      <div id="pass-msg" style="font-size:13px;margin-bottom:12px;display:none"></div>
+      <button class="btn btn-primary" onclick="changePassword()">Сохранить</button>
+    </div>
+  </div>
+
+</div>
+      <!-- Schedule -->
+      <div id="csec-schedule" style="display:none;height:100%;flex-direction:column">
+  <div style="padding:16px 24px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+    <div style="display:flex;gap:6px">
+      <button class="pay-tab active" id="sched-filter-all" onclick="schedFilter('all',this)">Все</button>
+      <button class="pay-tab" id="sched-filter-scheduled" onclick="schedFilter('scheduled',this)">Предстоящие</button>
+      <button class="pay-tab" id="sched-filter-completed" onclick="schedFilter('completed',this)">Завершённые</button>
+    </div>
+    <button class="btn btn-primary btn-sm" onclick="openTrainingRequestModal()">+ Записаться</button>
+  </div>
+  <div id="client-calendar" style="flex:1"></div>
+</div>
+      <!-- CRM+ Progress -->
+      <div id="csec-progress" style="display:none;padding:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px;flex-wrap:wrap"><div><h2 style="font-family:var(--f2);font-size:22px">Мой прогресс</h2><div style="font-size:13px;color:var(--t2);margin-top:4px">Вес, процент жира и замеры тела в динамике</div></div><button class="btn btn-primary btn-sm" onclick="openProgressEntry()">+ Добавить измерение</button></div>
+        <div class="card" style="padding:18px;margin-bottom:16px"><div id="progress-summary" class="finance-summary" style="margin:0"></div></div>
+        <div class="card" style="overflow:hidden"><div class="table-wrap"><table><thead><tr><th>Дата</th><th>Вес</th><th>Жир</th><th>Талия</th><th>Грудь</th><th>Бёдра</th><th>Комментарий</th></tr></thead><tbody id="progress-tbody"></tbody></table></div></div>
+      </div>
+      <!-- CRM+ Notifications -->
+      <div id="csec-notifications" style="display:none;padding:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px"><h2 style="font-family:var(--f2);font-size:22px">Уведомления</h2><button class="btn btn-ghost btn-sm" onclick="loadNotifications()">Обновить</button></div>
+        <div id="notifications-list" style="display:flex;flex-direction:column;gap:10px"></div>
+      </div>
+
+      <!-- Payments -->
+      <div id="csec-payments" style="display:none;padding:24px">
+        <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap">
+            <button class="btn btn-ghost btn-sm" onclick="openModal('modal-topup')">Пополнение баланса</button>
+        </div>
+        <div class="pay-cards">
+          <div class="pay-card">
+            <div class="pay-card-title">Общий баланс</div>
+            <div class="pay-card-body">
+              <div>
+                <div class="pay-card-val">Посещений: <span id="pay-visits">0</span></div>
+                <div class="pay-card-val">Остаток: <span id="pay-balance">0.00</span></div>
+              </div>
+              <button class="pay-card-plus" onclick="openModal('modal-topup')">+</button>
+            </div>
+          </div>
+          <div class="pay-card">
+            <div class="pay-card-title">Количество занятий</div>
+            <div class="pay-card-body">
+              <div class="pay-count" id="pay-sessions">0</div>
+              <span style="color:var(--t2);font-size:13px">›</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:4px;margin-bottom:16px">
+          <button class="pay-tab active" onclick="payTab(this,'history')">История платежей</button>
+          <button class="pay-tab" onclick="payTab(this,'invoices')">Счета на оплату</button>
+          <button class="pay-tab" onclick="payTab(this,'subs')">Абонементы</button>
+        </div>
+        <div class="card" style="overflow:hidden">
+          <div id="pay-history-content"><div class="table-wrap"><table><thead><tr><th>Дата</th><th>Плательщик</th><th>Сумма</th><th>Тип операции</th></tr></thead><tbody id="payments-tbody"></tbody></table></div></div>
+          <div id="pay-invoices-content" style="display:none;padding:24px;text-align:center;color:var(--t2)">Счетов нет</div>
+          <div id="pay-subs-content" style="display:none"><div class="table-wrap"><table><thead><tr><th>Абонемент</th><th>Начало</th><th>Конец</th><th>Занятий</th><th>Статус</th></tr></thead><tbody id="subs-tbody"></tbody></table></div></div>
+        </div>
+      </div>
+      <!-- Shop -->
+      <div id="csec-shop" style="display:none;padding:24px">
+        <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap" id="shop-cat-filters">
+          <button class="pay-tab active" onclick="shopFilter('all',this)">Все</button>
+          <button class="pay-tab" onclick="shopFilter('subscription',this)">Абонементы</button>
+          <button class="pay-tab" onclick="shopFilter('sports',this)">Спортивные товары</button>
+        </div>
+        <div class="shop-grid" id="shop-grid"></div>
+      </div>
+      <!-- Trainers for client -->
+      <div id="csec-trainers" style="display:none;padding:24px">
+        <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap" id="client-trainer-filters">
+          <button class="pay-tab active" onclick="clientTrainerFilter('all',this)">Все</button>
+          <button class="pay-tab" onclick="clientTrainerFilter('body_relief',this)">Рельеф тела</button>
+          <button class="pay-tab" onclick="clientTrainerFilter('weight_loss',this)">Похудение</button>
+          <button class="pay-tab" onclick="clientTrainerFilter('mass_gain',this)">Набор массы</button>
+        </div>
+        <div class="trainers-grid" id="client-trainers-grid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STAFF DASHBOARD -->
+<div id="page-staff" class="page">
+  <div class="dash-wrap" style="height:100%">
+    <div class="sidebar sidebar-staff" style="padding:0 0 14px">
+      <div style="padding:16px 14px 18px;border-bottom:1px solid var(--border)">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px">
+          <img class="gym-mark" src="/assets/gym-mark.svg" width="28" height="28" alt="" aria-hidden="true">
+          <span style="font-family:var(--f2);font-size:18px;font-weight:700;color:#3b82f6;letter-spacing:.08em">SFEDU</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:var(--bg4);border:1px solid var(--border);border-radius:var(--r2);padding:8px 10px;cursor:pointer;transition:border-color .2s" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'" onclick="staffNav('profile')">
+          <div class="avatar" id="staff-avatar" style="width:34px;height:34px;font-size:13px">АД</div>
+          <div style="flex:1;overflow:hidden">
+            <div id="staff-nav-name" style="font-size:13px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Администратор</div>
+            <div id="staff-nav-role" style="font-size:11px;color:var(--blue2);font-weight:600">Администратор</div>
+          </div>
+          <span style="color:var(--t3);font-size:12px">›</span>
+        </div>
+      </div>
+      <div style="padding:10px 8px;flex:1;display:flex;flex-direction:column;gap:2px">
+        <button class="nav-item" id="snav-dashboard" onclick="staffNav('dashboard')" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M3 3v18h18"/><path d="M7 16v-5"/><path d="M12 16V8"/><path d="M17 16V5"/></svg>Dashboard</button>
+        <button class="nav-item" id="snav-tasks" onclick="staffNav('tasks')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m8 12 3 3 5-6"/></svg>Мои задачи</button>
+        <button class="nav-item" id="snav-profile" onclick="staffNav('profile')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>Мой профиль</button>
+        <button class="nav-item active" id="snav-schedule" onclick="staffNav('schedule')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Посещаемость</button>
+        <button class="nav-item" id="snav-shop" onclick="staffNav('shop')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>Магазин</button>
+        <button class="nav-item" id="snav-clients" onclick="staffNav('clients')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Клиенты</button>
+        <button class="nav-item" id="snav-applications" onclick="staffNav('applications')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Заявки</button>
+        <button class="nav-item" id="snav-trainers" onclick="staffNav('trainers')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>Тренера</button>
+        <button class="nav-item" id="snav-finance" onclick="staffNav('finance')" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Финансы</button>
+      </div>
+      <div style="padding:0 8px;display:flex;flex-direction:column;gap:3px">
+        <button class="nav-item" onclick="toggleAI()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg>ИИ Спортсмен</button>
+        <button class="nav-item" onclick="logout()" style="color:var(--t3)" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--t3)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Выйти</button>
+      </div>
+    </div>
+
+    <div class="dash-main" id="staff-main">
+
+      <!-- CRM+ Dashboard -->
+      <div id="ssec-dashboard" style="display:none;padding:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:18px"><div><h2 style="font-family:var(--f2);font-size:24px">Панель управления</h2><div style="font-size:13px;color:var(--t2);margin-top:4px">Ключевые показатели спортзала и удержания клиентов</div></div><div style="display:flex;gap:8px"><button class="btn btn-ghost btn-sm" onclick="downloadProtected('/exports/clients.csv','clients.csv')">CSV клиентов</button><button class="btn btn-ghost btn-sm" onclick="downloadProtected('/exports/finance.csv','finance.csv')">CSV финансов</button></div></div>
+        <div class="finance-summary" id="crm-dashboard-cards"></div>
+        <div class="card" style="padding:18px"><h3 style="margin-bottom:14px">Загрузка тренеров за 30 дней</h3><div id="trainer-utilization"></div></div>
+      </div>
+      <!-- CRM+ Tasks -->
+      <div id="ssec-tasks" style="display:none;padding:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:10px;flex-wrap:wrap"><div><h2 style="font-family:var(--f2);font-size:22px">Мои задачи</h2><div style="font-size:13px;color:var(--t2);margin-top:4px">Follow-up по клиентам, продления и внутренние поручения</div></div><button class="btn btn-primary btn-sm" onclick="openTaskModal()">+ Новая задача</button></div>
+        <div style="display:flex;gap:8px;margin-bottom:14px"><button class="pay-tab active" id="task-filter-open" onclick="loadTasks(false)">Открытые</button><button class="pay-tab" id="task-filter-all" onclick="loadTasks(true)">Все</button></div>
+        <div id="tasks-list" style="display:flex;flex-direction:column;gap:10px"></div>
+      </div>
+
+      <!-- Schedule -->
+      <div id="ssec-schedule">
+        <div style="padding:16px 24px 0;display:flex;justify-content:flex-end">
+          <button class="btn btn-primary btn-sm" onclick="openCreateTrainingModal()">+ Добавить тренировку</button>
+        </div>
+        <div id="staff-calendar"></div>
+      </div>
+
+      <!-- Clients -->
+<div id="ssec-clients" style="display:none;padding:24px">
+  <div class="clients-filters">
+    <input class="inp" id="client-search" placeholder="🔍 Поиск по ФИО или телефону" style="width:260px" oninput="renderClientsTable()">
+    <select class="inp" id="client-role-filter" style="width:160px" onchange="renderClientsTable()">
+      <option value="">Все роли</option>
+      <option value="client">Клиенты</option>
+      <option value="manager">Менеджеры</option>
+    </select>
+    <button class="btn btn-ghost btn-sm" id="export-clients-btn" onclick="downloadProtected('/exports/clients.csv','clients.csv')">Экспорт CSV</button>
+    <button class="btn btn-primary btn-sm" onclick="openCreateUserModal()">+ Добавить клиента</button>
+  </div>
+  <div class="card" style="overflow:hidden">
+    <div class="table-wrap">
+      <table><thead><tr><th>ФИО</th><th>Телефон</th><th>Email</th><th>Баланс</th><th>Посещений</th><th>Занятий</th><th>Последний визит</th><th>Статус</th><th>Действия</th></tr></thead><tbody id="clients-tbody"></tbody></table>
+    </div>
+  </div>
+</div>
+
+      <!-- Applications -->
+      <div id="ssec-applications" style="display:none;padding:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+          <h2 style="font-family:var(--f2);font-size:22px;font-weight:700">Заявки на регистрацию</h2>
+          <div style="display:flex;gap:8px">
+            <button class="pay-tab active" onclick="appFilter('pending',this)">Ожидают</button>
+            <button class="pay-tab" onclick="appFilter('approved',this)">Принятые</button>
+            <button class="pay-tab" onclick="appFilter('rejected',this)">Отклонённые</button>
+          </div>
+        </div>
+        <div id="applications-list" style="display:flex;flex-direction:column;gap:10px"></div>
+      </div>
+
+      <!-- Trainers -->
+      <div id="ssec-trainers" style="display:none;padding:24px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px">
+    <h2 style="font-family:var(--f2);font-size:22px;font-weight:700">Тренерский состав</h2>
+    <button class="btn btn-primary btn-sm" id="add-trainer-btn" onclick="openCreateTrainerModal()" style="display:none">+ Добавить тренера</button>
+  </div>
+  <div style="display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap" id="staff-trainer-filters">
+    <button class="pay-tab active" onclick="staffTrainerFilter('all',this)">Все</button>
+    <button class="pay-tab" onclick="staffTrainerFilter('body_relief',this)">Рельеф тела</button>
+    <button class="pay-tab" onclick="staffTrainerFilter('weight_loss',this)">Похудение</button>
+    <button class="pay-tab" onclick="staffTrainerFilter('mass_gain',this)">Набор массы</button>
+  </div>
+  <div class="trainers-grid" id="staff-trainers-grid"></div>
+</div>
+
+      <!-- Shop -->
+      <div id="ssec-shop" style="display:none;padding:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+          <h2 style="font-family:var(--f2);font-size:22px;font-weight:700">Магазин</h2>
+          <button class="btn btn-primary btn-sm" onclick="openCreateProductModal()">+ Добавить товар</button>
+        </div>
+        <div class="shop-grid" id="staff-shop-grid"></div>
+      </div>
+
+      <!-- Finance -->
+      <div id="ssec-finance" style="display:none;padding:24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px"><h2 style="font-family:var(--f2);font-size:22px;font-weight:700">Финансы</h2><button class="btn btn-ghost btn-sm" onclick="downloadProtected('/exports/finance.csv','finance.csv')">Экспорт CSV</button></div>
+        <div class="finance-summary">
+          <div class="fin-card"><div class="fin-card-label">Доходы</div><div class="fin-card-val income" id="fin-income">0.00</div></div>
+          <div class="fin-card"><div class="fin-card-label">Расходы</div><div class="fin-card-val expense" id="fin-expense">0.00</div></div>
+          <div class="fin-card"><div class="fin-card-label">Возвраты</div><div class="fin-card-val" style="color:var(--yellow)" id="fin-refund">0.00</div></div>
+          <div class="fin-card"><div class="fin-card-label">Итого</div><div class="fin-card-val net" id="fin-net">0.00</div></div>
+        </div>
+        <div style="margin-bottom:16px">
+          <button class="btn btn-ghost btn-sm" onclick="openStaffTopUpModal()">+ Пополнить баланс клиента</button>
+        </div>
+        <div class="card" style="overflow:hidden">
+          <div class="table-wrap"><table><thead><tr><th>Дата и время</th><th>Клиент</th><th>Сумма</th><th>Услуга</th><th>Тип</th></tr></thead><tbody id="finance-tbody"></tbody></table></div>
+        </div>
+      </div>
+
+      <!-- Profile -->
+      <div id="ssec-profile" style="display:none;padding:28px;max-width:700px">
+        <div class="card card-glow" style="padding:30px">
+          <h2 style="font-size:20px;font-weight:700;margin-bottom:22px">Мои данные</h2>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+            <div class="avatar" id="staff-big-avatar" style="width:48px;height:48px;font-size:18px">АД</div>
+            <span id="staff-fullname-display" style="font-size:16px;font-weight:600">Загрузка...</span>
+          </div>
+          <div class="profile-form" style="margin-bottom:16px">
+            <div class="inp-wrap"><label class="inp-label">ФИО</label><input class="inp" id="sp-fullname" autocomplete="name"></div>
+            <div class="inp-wrap"><label class="inp-label">Телефон</label><input class="inp" id="sp-phone" autocomplete="tel"></div>
+          </div>
+          <div class="inp-wrap" style="margin-bottom:22px"><label class="inp-label">Email</label><input class="inp" id="sp-email" type="email" autocomplete="email"></div>
+          <div id="staff-profile-msg" style="font-size:13px;margin-bottom:12px;display:none"></div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <button class="btn btn-outline" id="staff-profile-edit-btn" type="button" onclick="enableStaffProfileEdit()">Изменить данные</button>
+            <button class="btn btn-primary" id="staff-profile-save-btn" type="button" onclick="saveStaffProfile()">Сохранить</button>
+            <button class="btn btn-ghost" id="staff-profile-cancel-btn" type="button" onclick="cancelStaffProfileEdit()" style="display:none">Отмена</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- GLOBAL AI PANEL -->
+<div class="ai-panel" id="ai-panel" style="display:none" role="dialog" aria-label="ИИ Спортсмен">
+  <div class="ai-panel-head"><span>ИИ Спортсмен</span><div class="ai-panel-actions"><button class="ai-head-btn" onclick="newAIConversation()" title="Новый чат">＋</button><button class="ai-head-btn" onclick="toggleAI(false)" title="Закрыть">✕</button></div></div>
+  <div class="ai-messages" id="ai-messages" aria-live="polite"><div class="ai-msg-wrap ai"><div class="ai-msg ai">Привет! Я ИИ Спортсмен — помогу разобраться с системой SFEDU.</div></div></div>
+  <div class="ai-input"><input class="ai-inp" id="ai-inp" maxlength="4000" placeholder="Напишите сообщение..." onkeydown="if(event.key==='Enter'&&!event.shiftKey&&!event.isComposing){event.preventDefault();sendAI()}"><button class="ai-send" id="ai-send" onclick="sendAI()">→</button></div>
+</div>
+
+<!-- CRM+ MODALS -->
+<div class="modal-overlay" id="modal-progress"><div class="modal-box" style="width:520px"><div class="modal-head"><h3>Новое измерение</h3><button class="modal-close" onclick="closeModal('modal-progress')">✕</button></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div class="inp-wrap"><label class="inp-label">Вес, кг</label><input class="inp" id="pr-weight" type="number" step="0.1"></div><div class="inp-wrap"><label class="inp-label">Жир, %</label><input class="inp" id="pr-fat" type="number" step="0.1"></div><div class="inp-wrap"><label class="inp-label">Талия, см</label><input class="inp" id="pr-waist" type="number" step="0.1"></div><div class="inp-wrap"><label class="inp-label">Грудь, см</label><input class="inp" id="pr-chest" type="number" step="0.1"></div><div class="inp-wrap"><label class="inp-label">Бёдра, см</label><input class="inp" id="pr-hips" type="number" step="0.1"></div></div><div class="inp-wrap" style="margin-top:12px"><label class="inp-label">Комментарий</label><textarea class="inp" id="pr-comment" rows="3"></textarea></div><button class="btn btn-primary" style="width:100%;margin-top:16px" onclick="saveProgressEntry()">Сохранить</button></div></div>
+<div class="modal-overlay" id="modal-task"><div class="modal-box" style="width:520px"><div class="modal-head"><h3>Новая задача</h3><button class="modal-close" onclick="closeModal('modal-task')">✕</button></div><div class="inp-wrap"><label class="inp-label">Название</label><input class="inp" id="task-title"></div><div class="inp-wrap" style="margin-top:12px"><label class="inp-label">Клиент</label><select class="inp" id="task-client"><option value="">Без привязки</option></select></div><div class="inp-wrap" style="margin-top:12px"><label class="inp-label">Исполнитель</label><select class="inp" id="task-assignee"></select></div><div class="inp-wrap" style="margin-top:12px"><label class="inp-label">Срок</label><input class="inp" id="task-due" type="datetime-local"></div><div class="inp-wrap" style="margin-top:12px"><label class="inp-label">Описание</label><textarea class="inp" id="task-desc" rows="3"></textarea></div><button class="btn btn-primary" style="width:100%;margin-top:16px" onclick="saveTask()">Создать</button></div></div>
+<div class="modal-overlay" id="modal-client-crm"><div class="modal-box" style="width:min(980px,96vw);max-height:90vh;overflow:auto"><div class="modal-head"><div><h3 id="crm-client-title">CRM-карточка</h3><div id="crm-client-sub" style="font-size:12px;color:var(--t2);margin-top:3px"></div></div><button class="modal-close" onclick="closeModal('modal-client-crm')">✕</button></div><div id="crm-client-body"></div></div></div>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-apply">
+  <div class="modal-box" style="width:440px">
+    <div class="modal-head">
+      <div class="modal-logo"><img class="gym-mark" src="/assets/gym-mark.svg" width="24" height="24" alt="" aria-hidden="true"><span style="font-family:var(--f2);font-size:16px;font-weight:700;color:#3b82f6;letter-spacing:.08em">SFEDU</span></div>
+      <button class="modal-close" onclick="closeModal('modal-apply')">✕</button>
+    </div>
+    <div id="apply-form">
+      <h2 style="text-align:center;font-size:20px;font-weight:700;margin-bottom:22px">Добро пожаловать!</h2>
+      <div style="display:flex;flex-direction:column;gap:14px">
+
+        <div class="inp-wrap"><label class="inp-label">ФИО</label><input class="inp" id="a-name" placeholder="Романов Тимофей Юрьевич"></div>
+        <div class="inp-wrap"><label class="inp-label">Номер телефона</label><input class="inp" id="a-phone" placeholder="+7(987)654-32-10"></div>
+        <div class="inp-wrap"><label class="inp-label">Ваша почта</label><input class="inp" id="a-email" placeholder="@gmail.com"></div>
+        <div class="inp-wrap"><label class="inp-label" for="a-gender">Пол</label><select class="inp" id="a-gender"><option value="">Выберите</option><option value="male">Мужской</option><option value="female">Женский</option></select></div>
+        <p style="font-size:12px;color:var(--t3);text-align:center;line-height:1.55">Нажимая «Записаться», вы соглашаетесь с нашими условиями использования и политикой конфиденциальности.</p>
+        <div id="apply-err" style="font-size:13px;color:var(--red);text-align:center;display:none"></div>
+        <button class="btn btn-primary" style="width:100%;padding:12px" onclick="submitApply()">Записаться</button>
+      </div>
+    </div>
+    <div id="apply-success" style="display:none;text-align:center;padding:20px 0">
+      <div style="font-size:52px;margin-bottom:16px">✅</div>
+      <h3 style="font-size:20px;font-weight:700;margin-bottom:12px">Заявка отправлена!</h3>
+      <p style="color:var(--t2);margin-bottom:24px">После одобрения заявки на ваш email придёт ссылка для создания пароля</p>
+      <button class="btn btn-primary" onclick="closeModal('modal-apply');document.getElementById('apply-success').style.display='none';document.getElementById('apply-form').style.display='block'">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-login">
+  <div class="modal-box" style="width:420px">
+    <div class="modal-head">
+      <div class="modal-logo"><img class="gym-mark" src="/assets/gym-mark.svg" width="24" height="24" alt="" aria-hidden="true"><span style="font-family:var(--f2);font-size:16px;font-weight:700;color:#3b82f6;letter-spacing:.08em">SFEDU</span></div>
+      <button class="modal-close" onclick="closeModal('modal-login')">✕</button>
+    </div>
+    <h2 style="text-align:center;font-size:20px;font-weight:700;margin-bottom:22px">Вход в систему</h2>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="inp-wrap"><label class="inp-label">Email</label><input type="email" class="inp" id="l-email" placeholder="admin@gmail.com"></div>
+      <div class="inp-wrap"><label class="inp-label">Пароль</label><input type="password" class="inp" id="l-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')submitLogin()"></div>
+      <div id="login-err" style="font-size:13px;color:var(--red);text-align:center;display:none"></div>
+      <button class="btn btn-primary" style="width:100%;padding:12px" onclick="submitLogin()">Войти</button>
+      <button onclick="closeModal('modal-login');openForgotPassword()" style="background:none;border:none;color:var(--blue2);cursor:pointer;font-weight:600;font-size:13px;text-align:center">Забыли пароль?</button>
+      <p style="text-align:center;font-size:13px;color:var(--t2)">Нет аккаунта? <button onclick="closeModal('modal-login');openModal('modal-apply')" style="background:none;border:none;color:var(--blue2);cursor:pointer;font-weight:600;font-size:13px">Записаться</button></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-forgot-password">
+  <div class="modal-box" style="width:420px">
+    <div class="modal-head"><span style="font-weight:700">Восстановление пароля</span><button class="modal-close" onclick="closeModal('modal-forgot-password')">✕</button></div>
+    <p style="font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:16px">Введите email аккаунта. Если он зарегистрирован, мы отправим одноразовую ссылку для создания нового пароля.</p>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="inp-wrap"><label class="inp-label">Email</label><input type="email" class="inp" id="forgot-email" placeholder="client@gmail.com" onkeydown="if(event.key==='Enter')submitForgotPassword()"></div>
+      <div id="forgot-msg" style="font-size:13px;text-align:center;display:none"></div>
+      <button class="btn btn-primary" style="width:100%;padding:12px" onclick="submitForgotPassword()">Отправить ссылку</button>
+      <button class="btn btn-ghost" style="width:100%" onclick="closeModal('modal-forgot-password');openModal('modal-login')">Вернуться ко входу</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-set-password">
+  <div class="modal-box" style="width:430px">
+    <div class="modal-head"><span style="font-weight:700" id="set-password-title">Создайте пароль</span><button class="modal-close" onclick="closeModal('modal-set-password')">✕</button></div>
+    <p id="set-password-hint" style="font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:16px">Придумайте пароль для входа в SFEDU.</p>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="inp-wrap"><label class="inp-label">Новый пароль</label><input type="password" class="inp" id="set-password-new" placeholder="Минимум 8 символов" autocomplete="new-password"></div>
+      <div class="inp-wrap"><label class="inp-label">Повторите пароль</label><input type="password" class="inp" id="set-password-confirm" placeholder="Повторите пароль" autocomplete="new-password" onkeydown="if(event.key==='Enter')submitSetPassword()"></div>
+      <div id="set-password-msg" style="font-size:13px;text-align:center;display:none"></div>
+      <button class="btn btn-primary" id="set-password-submit" style="width:100%;padding:12px" onclick="submitSetPassword()">Сохранить пароль</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-topup"><div class="modal-box" style="width:400px"><div class="modal-head"><div class="modal-logo"><img class="gym-mark" src="/assets/gym-mark.svg" width="22" height="22" alt="" aria-hidden="true"><span style="font-family:var(--f2);font-size:15px;font-weight:700;color:#3b82f6">SFEDU</span></div><button class="modal-close" onclick="closeModal('modal-topup')">✕</button></div><h3 style="font-size:17px;font-weight:700;margin-bottom:12px">Пополнение баланса</h3><p style="font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:18px">Самостоятельное начисление средств отключено. Пополнение подтверждает менеджер или администратор.</p><button class="btn btn-primary" style="width:100%" onclick="closeModal('modal-topup')">Понятно</button></div></div>
+
+<div class="modal-overlay" id="modal-staff-topup">
+  <div class="modal-box" style="width:400px">
+    <div class="modal-head"><span style="font-weight:700">Пополнить баланс клиента</span><button class="modal-close" onclick="closeModal('modal-staff-topup')">✕</button></div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="inp-wrap"><label class="inp-label">Клиент</label>
+            <select class="inp" id="staff-topup-client"></select>
+        </div>
+      <div class="inp-wrap"><label class="inp-label">Сумма</label><input type="number" class="inp" id="staff-topup-amount" placeholder="0.00"></div>
+      <div id="staff-topup-err" style="font-size:13px;color:var(--red);display:none"></div>
+      <button class="btn btn-primary" onclick="submitStaffTopUp()">Пополнить</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-req-training">
+  <div class="modal-box" style="width:420px">
+    <div class="modal-head"><span style="font-weight:700;font-size:17px">Заявка на тренировку</span><button class="modal-close" onclick="closeModal('modal-req-training')">✕</button></div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:8px">
+        <button type="button" id="req-type-solo" class="btn btn-primary btn-sm" onclick="setReqType('solo')" style="flex:1">Индивидуальная</button>
+        <button type="button" id="req-type-trainer" class="btn btn-ghost btn-sm" onclick="setReqType('trainer')" style="flex:1">С тренером</button>
+      </div>
+      <div id="req-trainer-time-block" style="display:none;flex-direction:column;gap:14px">
+        <div id="req-date-block">
+          <div class="inp-wrap">
+            <label class="inp-label">Дата</label>
+            <input type="date" class="inp" id="req-date" style="color-scheme:dark">
+          </div>
+        </div>
+        <div class="inp-wrap">
+          <label class="inp-label">Время</label>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px" id="req-time-grid"></div>
+        </div>
+        <div class="inp-wrap">
+          <label class="inp-label">Тренер</label>
+          <select class="inp" id="req-trainer"><option value="">Любой тренер</option></select>
+        </div>
+      </div>
+      <div class="inp-wrap">
+        <label class="inp-label">Комментарий</label>
+        <textarea class="inp" id="req-comment" rows="2" placeholder="Пожелания к тренировке..." style="resize:vertical"></textarea>
+      </div>
+      <div id="req-err" style="font-size:13px;color:var(--red);display:none"></div>
+      <button class="btn btn-primary" onclick="submitTrainingRequest()">Отправить заявку</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-approve-req">
+  <div class="modal-box" style="width:460px">
+    <div class="modal-head">
+      <span style="font-weight:700;font-size:17px">Принять заявку</span>
+      <button class="modal-close" onclick="closeModal('modal-approve-req')">✕</button>
+    </div>
+    <div id="approve-req-info" style="background:var(--bg4);border-radius:var(--r);padding:14px;margin-bottom:16px;font-size:14px;color:var(--t2)"></div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="inp-wrap"><label class="inp-label">Название занятия</label><input class="inp" id="ar-title" placeholder="Персональная тренировка"></div>
+      <div class="inp-wrap"><label class="inp-label" for="ar-trainer">Тренер</label><select class="inp" id="ar-trainer"><option value="">Без тренера</option></select></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="inp-wrap"><label class="inp-label">Начало</label><input type="text" class="inp" id="ar-start" placeholder="27.05.2026 15:00"></div>
+        <div class="inp-wrap"><label class="inp-label">Конец</label><input type="text" class="inp" id="ar-end" placeholder="27.05.2026 16:00"></div>
+      </div>
+      <div class="inp-wrap"><label class="inp-label">Описание</label><textarea class="inp" id="ar-desc" rows="2" style="resize:vertical"></textarea></div>
+      <div id="ar-err" style="font-size:13px;color:var(--red);display:none"></div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-success" id="btn-approve-req" type="button">Принять</button>
+        <button class="btn btn-danger" id="btn-reject-req" type="button">Отклонить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-training-detail">
+  <div class="modal-box" style="width:460px">
+    <div class="modal-head"><span style="font-weight:700;font-size:17px" id="td-title">Занятие</span><button class="modal-close" onclick="closeModal('modal-training-detail')">✕</button></div>
+    <div id="td-body" style="display:flex;flex-direction:column;gap:12px;font-size:14px"></div>
+    <div style="margin-top:18px;display:flex;gap:10px" id="td-actions"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-edit-training">
+  <div class="modal-box" style="width:460px">
+    <div class="modal-head"><span style="font-weight:700">Изменить занятие</span><button class="modal-close" onclick="closeModal('modal-edit-training')">✕</button></div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="inp-wrap"><label class="inp-label">Название</label><input class="inp" id="et-title"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="inp-wrap"><label class="inp-label">Начало</label><input type="text" class="inp" id="et-start" placeholder="27.05.2026 15:00"></div>
+        <div class="inp-wrap"><label class="inp-label">Конец</label><input type="text" class="inp" id="et-end" placeholder="27.05.2026 16:00"></div>
+      </div>
+      <div class="inp-wrap"><label class="inp-label">Статус</label>
+        <select class="inp" id="et-status">
+          <option value="scheduled">Запланировано</option>
+          <option value="completed">Завершено</option>
+          <option value="cancelled">Отменено</option>
+        </select>
+      </div>
+      <div class="inp-wrap"><label class="inp-label">Описание</label><textarea class="inp" id="et-desc" rows="2" style="resize:vertical"></textarea></div>
+      <button class="btn btn-primary" onclick="submitEditTraining()">Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-create-user">
+  <div class="modal-box" style="width:440px">
+    <div class="modal-head"><span style="font-weight:700" id="cu-modal-title">Добавить пользователя</span><button class="modal-close" onclick="closeModal('modal-create-user')">✕</button></div>
+    <h2 id="cu-modal-subtitle" style="font-size:20px;font-weight:700;margin-bottom:16px;display:none"></h2>
+    <div style="display:flex;flex-direction:column;gap:13px">
+      <div class="inp-wrap"><label class="inp-label">ФИО</label><input class="inp" id="cu-name" placeholder="Фамилия Имя Отчество"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="inp-wrap"><label class="inp-label">Телефон</label><input class="inp" id="cu-phone" placeholder="+7..."></div>
+        <div class="inp-wrap"><label class="inp-label">Email</label><input class="inp" id="cu-email" placeholder="@gmail.com"></div>
+      </div>
+      <div class="inp-wrap" id="cu-pass-wrap"><label class="inp-label" id="cu-pass-label">Пароль сотрудника</label><input type="password" class="inp" id="cu-pass" placeholder="Минимум 8 символов"><div id="cu-pass-hint" style="font-size:12px;color:var(--t3);margin-top:5px">Для клиента пароль не задаётся: ему отправляется одноразовая ссылка на email.</div></div>
+      <div class="inp-wrap"><label class="inp-label">Роль</label>
+        <select class="inp" id="cu-role" onchange="updateCreateUserPasswordMode()"><option value="client">Клиент</option><option value="manager">Менеджер</option><option value="admin">Администратор</option></select>
+      </div>
+      <div class="inp-wrap"><label class="inp-label">Пол</label>
+        <select class="inp" id="cu-gender"><option value="male">Мужской</option><option value="female">Женский</option></select>
+      </div>
+      <div id="cu-err" style="font-size:13px;color:var(--red);display:none"></div>
+      <button class="btn btn-primary" id="cu-submit-btn" onclick="submitCreateUser()">Создать</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-create-trainer">
+  <div class="modal-box" style="width:440px">
+    <div class="modal-head"><span style="font-weight:700" id="ct-modal-title">Добавить тренера</span><button class="modal-close" onclick="closeModal('modal-create-trainer')">✕</button></div>
+    <div style="display:flex;flex-direction:column;gap:13px">
+      <div class="trainer-assignment-hint">Тренер назначается из существующего пользователя. После сохранения он появится в списке тренеров и станет доступен при создании тренировки.</div>
+      <div class="inp-wrap"><label class="inp-label">Пользователь</label><select class="inp" id="ct-userid"></select><div class="inp-help">Если тренеру нужен доступ к служебному расписанию, создайте его пользователя с ролью менеджера.</div></div>
+      <div class="inp-wrap"><label class="inp-label">Специализация</label>
+        <select class="inp" id="ct-spec"><option value="body_relief">Рельеф тела</option><option value="weight_loss">Похудение</option><option value="mass_gain">Набор массы</option></select>
+      </div>
+      <div class="inp-wrap"><label class="inp-label">Опыт (лет)</label><input type="number" class="inp" id="ct-exp" placeholder="0" min="0"></div>
+      <div class="inp-wrap">
+        <label class="inp-label">Фото тренера</label>
+        <div class="trainer-photo-picker">
+          <div id="ct-photo-preview" class="trainer-photo-preview" aria-label="Предпросмотр фото">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          </div>
+          <div class="trainer-photo-actions">
+            <input type="file" id="ct-photo-file" accept="image/*" hidden onchange="handleTrainerPhotoFile(this)">
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button type="button" class="btn btn-ghost btn-sm" onclick="document.getElementById('ct-photo-file').click()">Выбрать файл</button>
+              <button type="button" class="btn btn-ghost btn-sm" id="ct-photo-remove" onclick="removeTrainerPhotoSelection()" style="display:none">Убрать фото</button>
+            </div>
+            <div id="ct-photo-meta" class="inp-help">JPG, PNG, WebP. Перед загрузкой фото автоматически уменьшается до 320×320 и сжимается до WebP, обычно 15–50 КБ.</div>
+          </div>
+        </div>
+      </div>
+      <div class="inp-wrap"><label class="inp-label">О тренере</label><textarea class="inp" id="ct-bio" rows="3" style="resize:vertical" placeholder="Краткое описание..."></textarea></div>
+      <div id="ct-err" style="font-size:13px;color:var(--red);display:none"></div>
+      <button class="btn btn-primary" id="ct-submit-btn" onclick="submitCreateTrainer()">Добавить</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-create-product">
+  <div class="modal-box" style="width:440px">
+    <div class="modal-head"><span style="font-weight:700" id="cp-modal-title">Добавить товар</span><button class="modal-close" onclick="closeModal('modal-create-product')">✕</button></div>
+    <div style="display:flex;flex-direction:column;gap:13px">
+      <div class="product-photo-editor">
+        <div class="product-photo-preview" id="cp-photo-preview"><span>Нет фото</span></div>
+        <div class="inp-wrap">
+          <label class="inp-label" for="cp-photo-file">Фото товара или абонемента</label>
+          <input type="file" id="cp-photo-file" accept="image/jpeg,image/png,image/webp" onchange="handleProductPhotoFile(this)">
+          <button type="button" class="btn btn-ghost btn-sm" id="cp-photo-remove" onclick="removeProductPhotoSelection()" style="display:none">Убрать фото</button>
+          <div class="inp-help" id="cp-photo-meta">JPG, PNG или WebP. Фото появится в каталоге.</div>
+        </div>
+      </div>
+      <div class="inp-wrap"><label class="inp-label">Название</label><input class="inp" id="cp-name" placeholder="Название товара/абонемента"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="inp-wrap"><label class="inp-label">Цена (₽)</label><input type="number" class="inp" id="cp-price" placeholder="0.00" min="0"></div>
+        <div class="inp-wrap"><label class="inp-label">Категория</label><select class="inp" id="cp-cat" onchange="toggleSubFields()"><option value="subscription">Абонемент</option><option value="sports">Спорттовар</option></select></div>
+      </div>
+      <div id="sub-fields">
+        <div class="inp-wrap"><label class="inp-label" for="cp-subtype">Тип абонемента</label><select class="inp" id="cp-subtype"><option value="monthly">Месячный</option><option value="quarterly">Квартальный</option><option value="annual">Годовой</option><option value="single">Разовый</option></select></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="inp-wrap"><label class="inp-label">Дней</label><input type="number" class="inp" id="cp-days" placeholder="30"></div>
+          <div class="inp-wrap"><label class="inp-label">Занятий</label><input type="number" class="inp" id="cp-sessions" placeholder="12"></div>
+        </div>
+      </div>
+      <div class="inp-wrap"><label class="inp-label">Описание</label><textarea class="inp" id="cp-desc" rows="2" style="resize:vertical"></textarea></div>
+      <div id="cp-err" style="font-size:13px;color:var(--red);display:none"></div>
+      <button class="btn btn-primary" id="cp-submit-btn" onclick="submitCreateProduct()">Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-approve-app">
+  <div class="modal-box" style="width:400px">
+    <div class="modal-head"><span style="font-weight:700">Принять заявку</span><button class="modal-close" onclick="closeModal('modal-approve-app')">✕</button></div>
+    <div id="app-info" style="background:var(--bg4);border-radius:var(--r);padding:13px;margin-bottom:14px;font-size:14px"></div>
+    <div style="font-size:13px;color:var(--t2);line-height:1.55;margin-bottom:14px">После одобрения клиент получит одноразовую ссылку на email и самостоятельно создаст пароль. Сотрудник пароль клиента не видит.</div>
+    <div class="inp-wrap"><label class="inp-label" for="app-gender">Пол клиента</label><select class="inp" id="app-gender"><option value="">Уточните у клиента</option><option value="male">Мужской</option><option value="female">Женский</option></select></div>
+      <div id="app-err" style="font-size:13px;color:var(--red);margin-bottom:10px;display:none"></div>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-success" id="btn-approve-app" type="button">Принять</button>
+      <button class="btn btn-danger" id="btn-reject-app" type="button">Отклонить</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-create-training">
+  <div class="modal-box" style="width:480px">
+    <div class="modal-head"><span style="font-weight:700;font-size:17px">Добавить тренировку</span><button class="modal-close" onclick="closeModal('modal-create-training')">✕</button></div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:8px">
+        <button type="button" id="ctr-type-solo" class="btn btn-primary btn-sm" onclick="setCtrType('solo')" style="flex:1">Индивидуальная</button>
+        <button type="button" id="ctr-type-trainer" class="btn btn-ghost btn-sm" onclick="setCtrType('trainer')" style="flex:1">С тренером</button>
+      </div>
+      <div class="inp-wrap" style="position:relative">
+        <label class="inp-label">Клиент</label>
+        <input class="inp" id="ctr-client-search" placeholder="Введите ФИО клиента..." oninput="filterClientDropdown(this.value)" autocomplete="off">
+        <div id="ctr-client-dropdown" style="display:none;position:absolute;z-index:500;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);max-height:200px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.5);width:100%;top:100%;left:0;margin-top:4px"></div>
+        <input type="hidden" id="ctr-client">
+      </div>
+      <div class="inp-wrap"><label class="inp-label">Название</label><input class="inp" id="ctr-title" placeholder="Персональная тренировка"></div>
+      <div id="ctr-trainer-block" style="display:none">
+        <div class="inp-wrap"><label class="inp-label">Тренер</label><select class="inp" id="ctr-trainer"><option value="">Без тренера</option></select></div>
+      </div>
+      <div id="ctr-time-block" style="display:none">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="inp-wrap"><label class="inp-label">Начало</label><input type="text" class="inp" id="ctr-start" placeholder="02.06.2026 10:00"></div>
+          <div class="inp-wrap"><label class="inp-label">Конец</label><input type="text" class="inp" id="ctr-end" placeholder="02.06.2026 11:00"></div>
+        </div>
+      </div>
+      <div class="inp-wrap"><label class="inp-label">Описание</label><textarea class="inp" id="ctr-desc" rows="2" style="resize:vertical" placeholder="Описание..."></textarea></div>
+      <div id="ctr-err" style="font-size:13px;color:var(--red);display:none"></div>
+      <button class="btn btn-primary" onclick="submitCreateTraining()">Создать тренировку</button>
+    </div>
+  </div>
+</div>
+</div><!-- #app -->
+<script src="/assets/app.js"></script>
+</body>
+</html>
